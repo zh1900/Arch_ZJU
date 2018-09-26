@@ -1,0 +1,49 @@
+Running: D:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o E:/CS Homework/Computer Organization and Design/Test4/Single_SIM_isim_beh.exe -prj E:/CS Homework/Computer Organization and Design/Test4/Single_SIM_beh.prj work.Single_SIM work.glbl 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Analyzing Verilog file "E:/CS Homework/Computer Organization and Design/Test4/SingleCtrl.v" into library work
+Analyzing Verilog file "E:/CS Homework/Computer Organization and Design/Test4/SignExt.v" into library work
+Analyzing Verilog file "E:/CS Homework/Computer Organization and Design/Test4/Regs.v" into library work
+Analyzing Verilog file "E:/CS Homework/Computer Organization and Design/Test4/PC_reg.v" into library work
+Analyzing Verilog file "E:/CS Homework/Computer Organization and Design/Test4/PC_plus_4.v" into library work
+Analyzing Verilog file "E:/CS Homework/Computer Organization and Design/Test4/MUX_M.v" into library work
+Analyzing Verilog file "E:/CS Homework/Computer Organization and Design/Test4/ipcore_dir/instr_block.v" into library work
+Analyzing Verilog file "E:/CS Homework/Computer Organization and Design/Test4/ipcore_dir/dat_block.v" into library work
+Analyzing Verilog file "E:/CS Homework/Computer Organization and Design/Test4/ALUctr.v" into library work
+Analyzing Verilog file "E:/CS Homework/Computer Organization and Design/Test4/alu.v" into library work
+Analyzing Verilog file "E:/CS Homework/Computer Organization and Design/Test4/Adder.v" into library work
+Analyzing Verilog file "E:/CS Homework/Computer Organization and Design/Test4/Single.v" into library work
+Analyzing Verilog file "E:/CS Homework/Computer Organization and Design/Test4/Single_SIM.v" into library work
+Analyzing Verilog file "D:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling module PC_reg(N=9)
+Compiling module PC_plus_4(N=9)
+Compiling module BLK_MEM_GEN_V7_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V7_3_softecc_output_...
+Compiling module BLK_MEM_GEN_V7_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V7_3(C_FAMILY="kinte...
+Compiling module instr_block
+Compiling module MUX_M(N=5)
+Compiling module Regs
+Compiling module SingleCtrl
+Compiling module SignExt
+Compiling module MUX_M
+Compiling module ALUctr
+Compiling module alu
+Compiling module BLK_MEM_GEN_V7_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V7_3(C_FAMILY="kinte...
+Compiling module dat_block
+Compiling module Adder
+Compiling module MUX_M(N=9)
+Compiling module Single
+Compiling module Single_SIM
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Waiting for 13 sub-compilation(s) to finish...
+Compiled 22 Verilog Units
+Built simulation executable E:/CS Homework/Computer Organization and Design/Test4/Single_SIM_isim_beh.exe
+Fuse Memory Usage: 33252 KB
+Fuse CPU Usage: 811 ms
