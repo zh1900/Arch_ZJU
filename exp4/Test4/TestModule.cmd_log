@@ -1,6 +1,0 @@
-vhdtdtfi -lib work {E:/CS Homework/Computer Organization and Design/Test4/TestModule.v} -lang verilog -prj Test4 -o TestModule.spl -module TestModule -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
-spl2sym -intstyle ise -family kintex7 TestModule.spl {E:/CS Homework/Computer Organization and Design/Test4/TestModule.sym} 
-vhdtdtfi -lib work {E:/CS Homework/Computer Organization and Design/Test4/TestModule.v} -lang verilog -prj Test4 -o TestModule.spl -module TestModule -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
-spl2sym -intstyle ise -family kintex7 TestModule.spl {E:/CS Homework/Computer Organization and Design/Test4/TestModule.sym} 
-vhdtdtfi -lib work {E:/CS Homework/Computer Organization and Design/Test4/TestModule.v} -lang verilog -prj Test4 -o TestModule.spl -module TestModule -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
-spl2sym -intstyle ise -family kintex7 TestModule.spl {E:/CS Homework/Computer Organization and Design/Test4/TestModule.sym} 

@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=E:\CS Homework\Computer Organization and Design\Test4\top_sch.ncd
-OUTFILE=E:\CS Homework\Computer Organization and Design\Test4\top_sch.bit
-FAMILY=Kintex7
-PART=xc7k160t-1fbg676
-WORKINGDIR=E:\CS Homework\Computer Organization and Design\Test4
-LICENSE=WebPack
-USER_INFO=__0_0_0
