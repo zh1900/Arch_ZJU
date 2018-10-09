@@ -1,0 +1,19 @@
+[Inputs]
+clk_btn
+rst_btn
+=SW_in[6:0]=
+=PC[8:0]=
+=instr[31:0]=
+=reg_data[31:0]=
+[Outputs]
+clk_out
+rst_out
+=reg_addr[4:0]=
+=Seg_HEX[31:0]=
+=Seg_points[7:0]=
+=Seg_LES[7:0]=
+=LED[31:0]=
+[BiDir]
+[ATTRIBUTES]
+VeriModel TestModule
+

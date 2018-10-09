@@ -1,0 +1,142 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 14.7
+//  \   \         Application : sch2hdl
+//  /   /         Filename : top_sch.vf
+// /___/   /\     Timestamp : 05/17/2018 17:36:12
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -sympath "E:/CS Homework/Computer Organization and Design/Test4/ipcore_dir" -intstyle ise -family kintex7 -verilog "E:/CS Homework/Computer Organization and Design/Test4/top_sch.vf" -w "E:/CS Homework/Computer Organization and Design/Test4/top_sch.sch"
+//Design Name: top_sch
+//Device: kintex7
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module top_sch(BTN_y, 
+               clk_100mhz, 
+               readn, 
+               RSTN, 
+               SW, 
+               BTN_x, 
+               Buzzer, 
+               CR, 
+               led_clk, 
+               led_clrn, 
+               LED_PEN, 
+               led_sout, 
+               RDY, 
+               seg_clk, 
+               seg_clrn, 
+               SEG_PEN, 
+               seg_sout);
+
+    input [3:0] BTN_y;
+    input clk_100mhz;
+    input readn;
+    input RSTN;
+    input [15:0] SW;
+   output [4:0] BTN_x;
+   output Buzzer;
+   output CR;
+   output led_clk;
+   output led_clrn;
+   output LED_PEN;
+   output led_sout;
+   output RDY;
+   output seg_clk;
+   output seg_clrn;
+   output SEG_PEN;
+   output seg_sout;
+   
+   wire [3:0] BTN_OK;
+   wire [31:0] clk_div;
+   wire rst;
+   wire [15:0] SW_OK;
+   wire V0;
+   wire V5;
+   wire [31:0] XLXN_21;
+   wire [7:0] XLXN_22;
+   wire [7:0] XLXN_23;
+   wire [31:0] XLXN_24;
+   wire XLXN_30;
+   wire XLXN_31;
+   wire [4:0] XLXN_32;
+   wire [8:0] XLXN_39;
+   wire [31:0] XLXN_40;
+   wire [31:0] XLXN_41;
+   
+   BUF  XLXI_1 (.I(V5), 
+               .O(Buzzer));
+   SSeg7_Dev  XLXI_5 (.clk(clk_100mhz), 
+                     .flash(V5), 
+                     .Hexs(XLXN_21[31:0]), 
+                     .LES(XLXN_23[7:0]), 
+                     .point(XLXN_22[7:0]), 
+                     .rst(rst), 
+                     .Start(clk_div[20]), 
+                     .SW0(V5), 
+                     .seg_clk(seg_clk), 
+                     .seg_clrn(seg_clrn), 
+                     .SEG_PEN(SEG_PEN), 
+                     .seg_sout(seg_sout));
+   SPIO  XLXI_6 (.clk(clk_100mhz), 
+                .EN(V5), 
+                .P_Data(XLXN_24[31:0]), 
+                .rst(rst), 
+                .Start(clk_div[20]), 
+                .counter_set(), 
+                .GPIOf0(), 
+                .led_clk(led_clk), 
+                .led_clrn(led_clrn), 
+                .LED_out(), 
+                .LED_PEN(LED_PEN), 
+                .led_sout(led_sout));
+   SAnti_jitter  XLXI_7 (.clk(clk_100mhz), 
+                        .Key_y(BTN_y[3:0]), 
+                        .readn(readn), 
+                        .RSTN(RSTN), 
+                        .SW(SW[15:0]), 
+                        .BTN_OK(BTN_OK[3:0]), 
+                        .CR(CR), 
+                        .Key_out(), 
+                        .Key_ready(RDY), 
+                        .Key_x(BTN_x[4:0]), 
+                        .pulse_out(), 
+                        .rst(rst), 
+                        .SW_OK(SW_OK[15:0]));
+   clk_div  XLXI_8 (.clk(clk_100mhz), 
+                   .rst(rst), 
+                   .SW2(), 
+                   .clkdiv(clk_div[31:0]), 
+                   .Clk_CPU());
+   VCC  XLXI_12 (.P(V5));
+   GND  XLXI_15 (.G(V0));
+   Single  XLXI_21 (.clk(XLXN_30), 
+                   .reg_addr(XLXN_32[4:0]), 
+                   .rst(XLXN_31), 
+                   .instr(XLXN_41[31:0]), 
+                   .PC(XLXN_39[8:0]), 
+                   .reg_data(XLXN_40[31:0]), 
+                   .sim());
+   TestModule  XLXI_22 (.clk_btn(BTN_OK[3]), 
+                       .instr(XLXN_41[31:0]), 
+                       .PC(XLXN_39[8:0]), 
+                       .reg_data(XLXN_40[31:0]), 
+                       .rst_btn(BTN_OK[2]), 
+                       .SW_in(SW_OK[6:0]), 
+                       .clk_out(XLXN_30), 
+                       .LED(XLXN_24[31:0]), 
+                       .reg_addr(XLXN_32[4:0]), 
+                       .rst_out(XLXN_31), 
+                       .Seg_HEX(XLXN_21[31:0]), 
+                       .Seg_LES(XLXN_23[7:0]), 
+                       .Seg_points(XLXN_22[7:0]));
+endmodule
