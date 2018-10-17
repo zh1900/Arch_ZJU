@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2018-10-16T17:00:50</DateModified>
+  <DateModified>2018-10-16T15:56:53</DateModified>
   <ModuleName>mips_top</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>D:/ise14.7/Arch_ZJU/Topic1_SingleCPU/2018_topic1_student/iseconfig/mips_top.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>D:/ise14.7/Arch_ZJU/Topic1_SingleCPU/2018_topic1_student\</ImplementationReportsDirectory>
-  <DateInitialized>2018-10-08T00:40:58</DateInitialized>
+  <SavedFilePath>D:/ise14.7/Arch_ZJU/2018_topic2_student/2018_topic2_student/iseconfig/mips_top.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>D:/ise14.7/Arch_ZJU/2018_topic2_student/2018_topic2_student</ImplementationReportsDirectory>
+  <DateInitialized>2018-10-16T15:56:53</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
  <body>
