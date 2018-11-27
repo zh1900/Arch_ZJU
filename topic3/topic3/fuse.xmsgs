@@ -5,7 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"D:/ise14.7/Arch_ZJU/topic3/2018_topic2_student/mips_core.v" Line 112: Port <arg fmt="%s" index="1">addr_rs_id</arg> is not connected to this instance
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"D:/ise14.7/Arch_ZJU/topic3/topic3/mips_core.v" Line 112: Port <arg fmt="%s" index="1">addr_rs_id</arg> is not connected to this instance
 </msg>
 
 </messages>
