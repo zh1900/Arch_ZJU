@@ -8,15 +8,14 @@ Time resolution is 1 ps
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# run 2.00us
+# restart
 # restart
 # run 2.00us
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# run 9.00us
-# run 2.00us
-# run 2.00us
 # restart
-# run 2.00us
+# run 1.20us
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
+# run 1.50us
+The simulator has terminated in an unexpected manner.  Please review the ISim log (isim.log) for details.

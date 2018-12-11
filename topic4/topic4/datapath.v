@@ -1,7 +1,5 @@
 `include "define.vh"
-
-
-/**
+ /**
  * Data Path for MIPS 5-stage pipelined CPU.
  * Author: Zhao, Hongyu  <power_zhy@foxmail.com>
  */
@@ -72,31 +70,25 @@ module datapath (
 	 output reg [31:0] fwd_b_data,
      output reg [31:0] fwd_a_data_exe,
      output reg [31:0] fwd_b_data_exe,
-
-     output wire a_b_equal,
+      output wire a_b_equal,
      input wire fwd_m
 	);
-
-	`include "mips_define.vh"
-
-	// control signals
+ 	`include "mips_define.vh"
+ 	// control signals
 	reg [1:0] exe_a_src_exe, exe_b_src_exe;
 	reg [3:0] exe_alu_oper_exe;
 	reg mem_ren_exe;
 	reg mem_wen_exe, mem_wen_mem;
 	reg wb_data_src_exe, wb_data_src_mem, wb_data_src_wb;
-
-	// IF signals
+ 	// IF signals
 	wire [31:0] inst_addr_next;
-
-	// ID signals
+ 	// ID signals
 	reg [31:0] inst_addr_id;
 	reg [31:0] inst_addr_next_id;
 	reg [4:0] regw_addr_id;
 	wire [4:0] addr_rs, addr_rt, addr_rd;
 	wire [31:0] data_rs, data_rt, data_imm;
-
-	// EXE signals
+ 	// EXE signals
 	reg [31:0] inst_addr_exe;
 	reg [31:0] inst_addr_next_exe;
 	reg [31:0] inst_data_exe;
@@ -104,8 +96,7 @@ module datapath (
 	reg [31:0] opa_exe, opb_exe;
 	wire [31:0] alu_out_exe;
     reg fwd_m_exe;
-
-	// MEM signals
+ 	// MEM signals
 	reg [31:0] inst_addr_mem;
 	reg [31:0] inst_addr_next_mem;
 	reg [31:0] inst_data_mem;
@@ -114,18 +105,15 @@ module datapath (
 	reg [31:0] alu_out_mem;
 	reg rs_rt_equal_mem;
     reg fwd_m_mem;
-
-	// WB signals
+ 	// WB signals
 	reg [31:0] alu_out_wb;
 	reg [31:0] mem_din_wb;
 	reg [31:0] regw_data_wb;
-
-	// debug
+ 	// debug
 	`ifdef DEBUG
 	wire [31:0] debug_data_reg;
 	reg [31:0] debug_data_signal;
-
-	always @(posedge clk) begin
+ 	always @(posedge clk) begin
 		case (debug_addr[4:0])
 			0: debug_data_signal <= inst_addr;
 			1: debug_data_signal <= inst_data;
@@ -154,21 +142,17 @@ module datapath (
 			default: debug_data_signal <= 32'hFFFF_FFFF;
 		endcase
 	end
-
-	assign
+ 	assign
 		debug_data = debug_addr[5] ? debug_data_signal : debug_data_reg;
 	`endif
-
-	// IF stage
+ 	// IF stage
 	assign
 		inst_addr_next = inst_addr + 4;
-
-	always @(*) begin
+ 	always @(*) begin
 		if_valid = ~if_rst & if_en;
 		inst_ren = ~if_rst;
 	end
-
-    //next PC
+     //next PC
 	always @(posedge clk) begin
 		if (if_rst) begin
 			inst_addr <= 0;
@@ -186,8 +170,7 @@ module datapath (
 			// 	inst_addr <= inst_addr_next;
 		end
 	end
-
-	// ID stage
+ 	// ID stage
 	always @(posedge clk) begin
 		if (id_rst) begin
 			id_valid <= 0;
@@ -206,14 +189,12 @@ module datapath (
             // addr_rt_id<=addr_rt;
 		end
 	end
-
-	assign
+ 	assign
 		addr_rs = inst_data_id[25:21],
 		addr_rt = inst_data_id[20:16],
 		addr_rd = inst_data_id[15:11],
 		data_imm = imm_ext_ctrl ? {{16{inst_data_id[15]}}, inst_data_id[15:0]} : {16'b0, inst_data_id[15:0]};
-
-	always @(*) begin
+ 	always @(*) begin
 		regw_addr_id = inst_data_id[15:11];
 		case (wb_addr_src_ctrl)
 			WB_ADDR_RD: regw_addr_id = addr_rd;
@@ -221,8 +202,7 @@ module datapath (
 			WB_ADDR_LINK: regw_addr_id = GPR_RA;
 		endcase
 	end
-
-	regfile REGFILE (
+ 	regfile REGFILE (
 		.clk(clk),
 		`ifdef DEBUG
 		.debug_addr(debug_addr[4:0]),
@@ -236,8 +216,7 @@ module datapath (
 		.addr_w(regw_addr_wb),
 		.data_w(regw_data_wb)
 		);
-
-	// EXE stage
+ 	// EXE stage
 	always @(posedge clk) begin
 		if (exe_rst) begin
 			exe_valid <= 0;
@@ -283,12 +262,9 @@ module datapath (
             fwd_m_exe<=fwd_m;
 		end
 	end
-
-	assign
+ 	assign
 		a_b_equal = (fwd_a_data == fwd_b_data);
-
-
-	always @(*) begin
+ 	always @(*) begin
 		// id state
         case (fwd_a_ctrl)
             2'b00: fwd_a_data=data_rs;
@@ -302,8 +278,7 @@ module datapath (
             2'b10:fwd_b_data=alu_out_mem;
             2'b11:fwd_b_data=mem_din;
         endcase
-
-		// exe state
+ 		// exe state
 		case (exe_a_src_exe)
 			EXE_A_FWD_DATA: opa_exe = fwd_a_data_exe;	
 			EXE_A_LINK: opa_exe = inst_addr_next_exe;	// JAL
@@ -315,15 +290,13 @@ module datapath (
 			// EXE_B_BRANCH: opb_exe = {data_imm_exe[29:0], 2'b0};
 		endcase
 	end
-
-	alu ALU (
+ 	alu ALU (
 		.a(opa_exe),
 		.b(opb_exe),
 		.oper(exe_alu_oper_exe),
 		.result(alu_out_exe)
 		);
-
-	// MEM stage
+ 	// MEM stage
 	always @(posedge clk) begin
 		if (mem_rst) begin
 			mem_valid <= 0;
@@ -363,8 +336,7 @@ module datapath (
             fwd_m_mem<=fwd_m_exe;
 		end
 	end
-
-    //TODO branch_target_mem
+     //TODO branch_target_mem
 	// always @(*) begin
 	// 	case (pc_src_mem)
 	// 		PC_JUMP: branch_target_mem <= {inst_addr_mem[31:28],inst_data_mem[25:0], 2'b0};
@@ -374,14 +346,12 @@ module datapath (
 	// 		default: branch_target_mem <= inst_addr_next_mem;  // will never be used
 	// 	endcase
 	// end
-
-	assign
+ 	assign
 		mem_ren = mem_ren_mem,
 		mem_wen = mem_wen_mem,
 		mem_addr = alu_out_mem,	
 		mem_dout = fwd_m_mem ? regw_data_wb : data_rt_mem;
-
-	// WB stage
+ 	// WB stage
 	always @(posedge clk) begin
 		if (wb_rst) begin
 			wb_valid <= 0;
@@ -400,13 +370,11 @@ module datapath (
 			mem_din_wb <= mem_din;
 		end
 	end
-
-	always @(*) begin
+ 	always @(*) begin
 		regw_data_wb = alu_out_wb;
 		case (wb_data_src_wb)
 			WB_DATA_ALU: regw_data_wb = alu_out_wb;
 			WB_DATA_MEM: regw_data_wb = mem_din_wb;
 		endcase
 	end
-
-endmodule
+ endmodule

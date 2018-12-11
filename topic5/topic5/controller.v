@@ -117,7 +117,6 @@ module controller (/*AUTOARG*/
                         wb_wen = 1;
                         rs_used = 1;
                         rt_used = 1;
-                        //TODO overflow trap
                     end
 					R_FUNC_SUB: begin
 						exe_alu_oper =EXE_ALU_SUB;
@@ -133,8 +132,7 @@ module controller (/*AUTOARG*/
 						wb_data_src = WB_DATA_ALU;
 						wb_wen = 1;
 						rs_used = 1;
-						rt_used = 1;
-                        //TODO overflow trap
+						rt_used = 1;                    
 					end
 					R_FUNC_AND: begin
 						exe_alu_oper = EXE_ALU_AND;
