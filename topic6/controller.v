@@ -66,7 +66,7 @@ module controller (/*AUTOARG*/
 
 	// interrupt
 	output reg [1:0] oper,
- 	input wire jump_en // epc_ctrl, TODO: what to do with jump_en
+ 	input wire jump_en // epc_ctrl
 	);
 
 	`include "mips_define.vh"
@@ -104,7 +104,7 @@ module controller (/*AUTOARG*/
 				case (inst[5:0])
 					R_FUNC_JR: begin
 						pc_src = PC_FWD_DATA;
-                        // fwd_a_ctrl=2'b11; TODO: 应该要去掉吧
+                        // fwd_a_ctrl=2'b11; 
 						rs_used = 1;
 					end
 					R_FUNC_ADD: begin
@@ -122,7 +122,7 @@ module controller (/*AUTOARG*/
                         wb_wen = 1;
                         rs_used = 1;
                         rt_used = 1;
-                        //TODO overflow trap
+                       
                     end
 					R_FUNC_SUB: begin
 						exe_alu_oper =EXE_ALU_SUB;
@@ -139,7 +139,7 @@ module controller (/*AUTOARG*/
 						wb_wen = 1;
 						rs_used = 1;
 						rt_used = 1;
-                        //TODO overflow trap
+                        
 					end
 					R_FUNC_AND: begin
 						exe_alu_oper = EXE_ALU_AND;
@@ -254,7 +254,7 @@ module controller (/*AUTOARG*/
 			INST_JAL: begin
 				pc_src = PC_JUMP;
 				exe_a_src = EXE_A_LINK;
-				exe_b_src = EXE_B_FOUR; // TODO: 这个地方是不是不需要给exe_b_src赋值了？-- 我也不确定
+				exe_b_src = EXE_B_FOUR; 
 				exe_alu_oper = EXE_ALU_ADD;
 				wb_addr_src = WB_ADDR_LINK;
 				wb_data_src = WB_DATA_ALU;
@@ -262,7 +262,7 @@ module controller (/*AUTOARG*/
 			end
 			INST_BEQ: begin
 				pc_src = a_b_equal?PC_BRANCH:PC_NEXT;
-				exe_a_src = EXE_A_FWD_DATA;//TODO 不太确定
+				exe_a_src = EXE_A_FWD_DATA;
 				exe_b_src = EXE_B_FOUR;
 				exe_alu_oper = EXE_ALU_ADD;
 				imm_ext = 1;
@@ -271,7 +271,7 @@ module controller (/*AUTOARG*/
 			end
 			INST_BNE: begin
 				pc_src = a_b_equal?PC_NEXT:PC_BRANCH;
-				exe_a_src = EXE_A_FWD_DATA;//TODO 不太确定
+				exe_a_src = EXE_A_FWD_DATA;
 				exe_b_src = EXE_B_FOUR;
 				exe_alu_oper = EXE_ALU_ADD;
 				imm_ext = 1;
@@ -448,7 +448,7 @@ module controller (/*AUTOARG*/
 	end
 
 	always @(*) begin
-    //TODO 原来的branch stall的逻辑，删掉了
+    //delete origin branch stall
 		// branch_stall = 0;
 		// ID Stage for BEQ INSTR 	: pc_src != PC_NEXT
 		// EXE Stage for BEQ INSTR 	: is_branch_exe
