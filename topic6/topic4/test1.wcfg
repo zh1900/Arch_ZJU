@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/ise14.7/Arch_ZJU/topic6/topic4/sim_mips_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="sim_mips" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/sim_mips/uut/rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_mips/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_mips/uut/MIPS_CORE/CONTROLLER/jump_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">jump_en</obj_property>
+      <obj_property name="ObjectShortName">jump_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_mips/uut/MIPS_CORE/CONTROLLER/id_rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">id_rst</obj_property>
+      <obj_property name="ObjectShortName">id_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_mips/uut/inst_data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">inst_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">inst_data[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_mips/uut/inst_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">inst_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">inst_addr[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_mips/uut/MIPS_CORE/DATAPATH/REGFILE/regfile[1]" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">[1,31:0]</obj_property>
+      <obj_property name="ObjectShortName">regfile[1,31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_mips/uut/MIPS_CORE/DATAPATH/REGFILE/regfile[2]" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">[2,31:0]</obj_property>
+      <obj_property name="ObjectShortName">regfile[2,31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_mips/uut/MIPS_CORE/DATAPATH/REGFILE/regfile[3]" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">[3,31:0]</obj_property>
+      <obj_property name="ObjectShortName">regfile[3,31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_mips/uut/MIPS_CORE/DATAPATH/jump_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">jump_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">jump_addr[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_mips/uut/MIPS_CORE/DATAPATH/REGFILE/regfile[4]" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">[4,31:0]</obj_property>
+      <obj_property name="ObjectShortName">regfile[4,31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_mips/uut/MIPS_CORE/DATAPATH/REGFILE/regfile[5]" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">[5,31:0]</obj_property>
+      <obj_property name="ObjectShortName">regfile[5,31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_mips/uut/MIPS_CORE/DATAPATH/REGFILE/regfile[8]" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">[8,31:0]</obj_property>
+      <obj_property name="ObjectShortName">regfile[8,31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_mips/uut/MIPS_CORE/DATAPATH/REGFILE/regfile[9]" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">[9,31:0]</obj_property>
+      <obj_property name="ObjectShortName">regfile[9,31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+</wave_config>
