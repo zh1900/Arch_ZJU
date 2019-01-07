@@ -5,7 +5,6 @@
  * MIPS CPU wrapper.
  * Author: Zhao, Hongyu  <power_zhy@foxmail.com>
  */
-
 module mips (
 	`ifdef DEBUG
 	input wire debug_en,  // debug enable
@@ -34,8 +33,16 @@ module mips (
 	wire [31:0] mem_data_r;
 	wire [31:0] mem_data_w;
 
+	wire rom_stall, ram_stall;
+	wire rom_cs;
+	wire ram_cs;
+
 	// mips core
 	mips_core MIPS_CORE (
+		.rom_stall(rom_stall),
+		.ram_stall(ram_stall),
+		.ram_cs(ram_cs),
+		.rom_cs(rom_cs),
 		.clk(clk),
 		.rst(rst),
 		`ifdef DEBUG
@@ -61,6 +68,9 @@ module mips (
 		);
 
 	inst_rom INST_ROM (
+		.rom_stall(rom_stall),
+		.cs(rom_cs),
+		.rst(rst),
 		.clk(clk),
 		.addr({2'b0, inst_addr[31:2]}),
 		//.addr(inst_addr),
@@ -68,6 +78,9 @@ module mips (
 		);
 
 	data_ram DATA_RAM (
+		.ram_stall(ram_stall),
+		.cs(ram_cs),
+		.rst(rst),
 		.clk(clk),
 		.we(mem_wen),
 		.addr({2'b0, mem_addr[31:2]}),

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2018-12-18T16:07:40</DateModified>
+  <DateModified>2019-01-07T14:18:00</DateModified>
   <ModuleName>mips_top</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>D:/ise14.7/Arch_ZJU/topic6/topic4/iseconfig/mips_top.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>D:/ise14.7/Arch_ZJU/topic6/topic4\</ImplementationReportsDirectory>
+  <SavedFilePath>D:/ise14.7/Arch_ZJU/topic7/topic6/iseconfig/mips_top.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>D:/ise14.7/Arch_ZJU/topic7/topic6\</ImplementationReportsDirectory>
   <DateInitialized>2018-10-16T15:56:53</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

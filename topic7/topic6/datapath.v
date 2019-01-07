@@ -185,7 +185,7 @@ module datapath (
     //next PC
 	always @(posedge clk) begin
 		if (if_rst) begin
-			inst_addr <= 0;
+			inst_addr <= 0;	
 		end
 		else if (if_en) begin
 			if(jump_en) begin
@@ -198,7 +198,7 @@ module datapath (
 					PC_BRANCH: inst_addr<=inst_addr_next_id+(data_imm<<2);
 				endcase
 			end 
-			// if (is_branch_mem)//TODO pc select
+			// if (is_branch_mem)
 			// 	inst_addr <= branch_target_mem;
 			// else
 			// 	inst_addr <= inst_addr_next;
@@ -399,7 +399,7 @@ module datapath (
 		end
 	end
 
-    //TODO branch_target_mem
+   
 	// always @(*) begin
 	// 	case (pc_src_mem)
 	// 		PC_JUMP: branch_target_mem <= {inst_addr_mem[31:28],inst_data_mem[25:0], 2'b0};

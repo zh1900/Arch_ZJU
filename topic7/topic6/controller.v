@@ -66,7 +66,13 @@ module controller (/*AUTOARG*/
 
 	// interrupt
 	output reg [1:0] oper,
- 	input wire jump_en // epc_ctrl, TODO: what to do with jump_en
+ 	input wire jump_en, // epc_ctrl
+
+	// ram rom stall
+	input wire rom_stall,
+	input wire ram_stall,
+	output wire rom_cs,
+	output reg ram_cs
 	);
 
 	`include "mips_define.vh"
@@ -77,9 +83,18 @@ module controller (/*AUTOARG*/
     reg is_load_exe;
 	reg load_stall;
 
+	// initial begin
+	// 	rom_cs = 1;
+	// end
+
     always @ ( posedge clk ) begin
         is_load_exe<=is_load;
     end
+
+	assign rom_cs = 1;
+	// always @(clk) begin
+	// 	if(!rom_stall) rom_cs = ~rom_cs;	
+	// end 
 
 	always @(*) begin
 		pc_src = PC_NEXT;
@@ -99,12 +114,13 @@ module controller (/*AUTOARG*/
         sign = 0;
 		unrecognized = 0;
 		oper = EXE_CP_NONE;
+		ram_cs = 0;
 		case (inst[31:26])
 			INST_R: begin
 				case (inst[5:0])
 					R_FUNC_JR: begin
 						pc_src = PC_FWD_DATA;
-                        // fwd_a_ctrl=2'b11; TODO: 应该要去掉吧
+                        // fwd_a_ctrl=2'b11; 
 						rs_used = 1;
 					end
 					R_FUNC_ADD: begin
@@ -122,7 +138,7 @@ module controller (/*AUTOARG*/
                         wb_wen = 1;
                         rs_used = 1;
                         rt_used = 1;
-                        //TODO overflow trap
+                        
                     end
 					R_FUNC_SUB: begin
 						exe_alu_oper =EXE_ALU_SUB;
@@ -139,7 +155,7 @@ module controller (/*AUTOARG*/
 						wb_wen = 1;
 						rs_used = 1;
 						rt_used = 1;
-                        //TODO overflow trap
+                        
 					end
 					R_FUNC_AND: begin
 						exe_alu_oper = EXE_ALU_AND;
@@ -254,7 +270,7 @@ module controller (/*AUTOARG*/
 			INST_JAL: begin
 				pc_src = PC_JUMP;
 				exe_a_src = EXE_A_LINK;
-				exe_b_src = EXE_B_FOUR; // TODO: 这个地方是不是不需要给exe_b_src赋值了？-- 我也不确定
+				exe_b_src = EXE_B_FOUR; 
 				exe_alu_oper = EXE_ALU_ADD;
 				wb_addr_src = WB_ADDR_LINK;
 				wb_data_src = WB_DATA_ALU;
@@ -262,7 +278,7 @@ module controller (/*AUTOARG*/
 			end
 			INST_BEQ: begin
 				pc_src = a_b_equal?PC_BRANCH:PC_NEXT;
-				exe_a_src = EXE_A_FWD_DATA;//TODO 不太确定
+				exe_a_src = EXE_A_FWD_DATA;
 				exe_b_src = EXE_B_FOUR;
 				exe_alu_oper = EXE_ALU_ADD;
 				imm_ext = 1;
@@ -271,7 +287,7 @@ module controller (/*AUTOARG*/
 			end
 			INST_BNE: begin
 				pc_src = a_b_equal?PC_NEXT:PC_BRANCH;
-				exe_a_src = EXE_A_FWD_DATA;//TODO 不太确定
+				exe_a_src = EXE_A_FWD_DATA;
 				exe_b_src = EXE_B_FOUR;
 				exe_alu_oper = EXE_ALU_ADD;
 				imm_ext = 1;
@@ -345,6 +361,7 @@ module controller (/*AUTOARG*/
                 sign = 0;
 			end
 			INST_LW: begin
+				ram_cs = 1;
 				imm_ext = 1;
 				exe_b_src = EXE_B_IMM;
 				exe_alu_oper = EXE_ALU_ADD;
@@ -356,6 +373,7 @@ module controller (/*AUTOARG*/
                 is_load = 1;
 			end
 			INST_SW: begin
+				ram_cs = 1;
 				imm_ext = 1;
 				exe_b_src = EXE_B_IMM;
 				exe_alu_oper = EXE_ALU_ADD;
@@ -448,7 +466,7 @@ module controller (/*AUTOARG*/
 	end
 
 	always @(*) begin
-    //TODO 原来的branch stall的逻辑，删掉了
+    
 		// branch_stall = 0;
 		// ID Stage for BEQ INSTR 	: pc_src != PC_NEXT
 		// EXE Stage for BEQ INSTR 	: is_branch_exe
@@ -493,6 +511,17 @@ module controller (/*AUTOARG*/
 			wb_en = 0;
 		end
 		`endif
+		else if(rom_stall) begin 
+			if_en = 0;
+			id_en = 0;
+			exe_rst = 1;
+		end else if(ram_stall) begin
+			if_en = 0;
+			id_en = 0;
+			exe_en = 0;
+			mem_en = 0;
+			wb_rst = 1;
+		end
 		// this stall indicate that ID is waiting for previous instruction, should insert NOPs between ID and EXE.
 		// else if (reg_stall) begin
 		// 	if_en = 0;

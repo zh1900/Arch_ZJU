@@ -5,10 +5,10 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"D:/ise14.7/Arch_ZJU/topic6/topic4/sim_mips.v" Line 18: Port <arg fmt="%s" index="1">ir</arg> is not connected to this instance
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"D:/ise14.7/Arch_ZJU/topic7/topic6/sim_mips.v" Line 18: Port <arg fmt="%s" index="1">ir</arg> is not connected to this instance
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"D:/ise14.7/Arch_ZJU/topic6/topic4/mips_core.v" Line 138: Port <arg fmt="%s" index="1">addr_rs_id</arg> is not connected to this instance
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"D:/ise14.7/Arch_ZJU/topic7/topic6/mips_core.v" Line 148: Port <arg fmt="%s" index="1">addr_rs_id</arg> is not connected to this instance
 </msg>
 
 </messages>
